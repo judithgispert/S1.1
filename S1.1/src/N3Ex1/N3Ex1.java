@@ -67,6 +67,7 @@ public class N3Ex1 {
 				
 			case 7: //CALCULAR PREU NOTÍCIA
 				System.out.println("7. CALCULAR PREU DE LA NOTÍCIA");
+				calcularPreuNoticia(totEsport);
 				break;
 			
 			}
@@ -418,6 +419,155 @@ public class N3Ex1 {
 			System.out.println("Redactor no trobat a l'aplicació.");
 		}
 	}
+	
+	//MÈTODE CALCULAR PREU NOTÍCIES FUTBOL
+		static int calcularPreuFutbol (Redaccio totEsport, Object tipusNoticia) {
+			int contPreuFutbol = 300;
+			
+			//PUNTUACIÓ COMPETICIÓ
+			String nomCompeticio = ((Futbol) tipusNoticia).getCompeticio();
+			if(nomCompeticio.equalsIgnoreCase("Campions")) {
+				contPreuFutbol += 100;
+			}else {
+				contPreuFutbol += 0;
+			}
+			//PUNTUACIÓ CLUB
+			String nomClub = ((Futbol)tipusNoticia).getClub();
+			if(nomClub.equalsIgnoreCase("Barça")) {
+				contPreuFutbol += 100;
+			}else if(nomCompeticio.equalsIgnoreCase("Madrid")) {
+				contPreuFutbol += 100;
+			}else {
+				contPreuFutbol += 0;
+			}
+			//PUNTUACIÓ JUGADOR
+			String nomJugador = ((Futbol) tipusNoticia).getJugador();
+			if(nomJugador.equalsIgnoreCase("Ferran Torres")) {
+				contPreuFutbol += 50;
+			}else if(nomJugador.equalsIgnoreCase("Benzema")) {
+				contPreuFutbol += 50;
+			}else {
+				contPreuFutbol += 0;
+			}
+			
+			return contPreuFutbol;
+		}
+		
+		//MÈTODE PER CALCULAR PREU NOTÍCIES BÀSQUET
+		static int calcularPreuBasquet (Redaccio totEsport, Object tipusNoticia) {
+			int contPreuBasquet = 250;
+		
+			//PUNTUACIÓ COMPETICIÓ
+			String nomCompeticio = ((Basquet)tipusNoticia).getCompeticio();
+			if(nomCompeticio.equalsIgnoreCase("Eurolliga")) {
+				contPreuBasquet += 75;
+			}else {
+				contPreuBasquet += 0;
+			}
+			//PUNTUACIÓ CLUB
+			String nomClub = ((Basquet)tipusNoticia).getClub();
+			if(nomClub.equalsIgnoreCase("Barça")) {
+				contPreuBasquet += 75;
+			}else if(nomCompeticio.equalsIgnoreCase("Madrid")) {
+				contPreuBasquet += 75;
+			}else {
+				contPreuBasquet += 0;
+			}
+			
+			return contPreuBasquet;
+		}
+		
+		//MÈTODE PER CALCULAR PREU NOTÍCIES TENIS
+		static int calcularPreuTenis (Redaccio totEsport, Object tipusNoticia) {
+			int contPreuTenis = 150;
+			
+			//PUNTUACIÓ NOM TENISTA
+			String nomTenista = ((Tenis) tipusNoticia).getTenista();
+			if(nomTenista.equalsIgnoreCase("Federer")) {
+				contPreuTenis += 100;
+			}else if(nomTenista.equalsIgnoreCase("Nadal")) {
+				contPreuTenis += 100;
+			}else if(nomTenista.equalsIgnoreCase("Djokovic")) {
+				contPreuTenis += 100;		
+			}else {
+				contPreuTenis += 0;
+			}
+			
+			return contPreuTenis;
+		}
+		
+		//MÈTODE PER CALCULAR PREU NOTÍCIES F1
+		static int calcularPreuF1(Redaccio totEsport, Object tipusNoticia) {
+			int contPreuF1 = 100;
+			
+			//PUNTUACIÓ ESCUDERIA	
+			String nomEscuderia = ((F1) tipusNoticia).getEscuderia();
+			if(nomEscuderia.equalsIgnoreCase("Ferrari")) {
+				contPreuF1 += 50;
+			}else if(nomEscuderia.equalsIgnoreCase("Mercedes")) {
+				contPreuF1 += 50;	
+			}else {
+				contPreuF1 += 0;
+			}
+			
+			return contPreuF1;
+		}
+		
+		//MÈTODE PER CALCULAR PREU NOTÍCIES MOTOCICLISME
+		static int calcularPreuMotociclisme (Redaccio totEsport, Object tipusNoticia) {
+			int contPreuMoto = 100;
+			
+			//PUNTUACIÓ EQUIP
+			String nomEquip = ((Motociclisme) tipusNoticia).getEquip();
+			if(nomEquip.equalsIgnoreCase("Honda")) {
+				contPreuMoto += 50;
+			}else if(nomEquip.equalsIgnoreCase("Yamaha")) {
+				contPreuMoto += 50;	
+			}else {
+				contPreuMoto += 0;
+			}
+			
+			return contPreuMoto;
+		}
+		
+		//MÈTODE PER CALCULAR PUNTUACIÓ
+		static void calcularPreuNoticia(Redaccio totEsport) {
+		
+			int idRedactor = buscarRedactor (totEsport);
+			String titularNoticia = demanarString ("Escriu el nom de la notícia per calcular la puntuació:");
+			int idNoticia = buscarTitular (totEsport, titularNoticia);
+
+			if (idRedactor != -1) {
+				
+				if (idNoticia != -1) {
+					Object tipusNoticia = totEsport.getLlistaRedactors().get(idRedactor).getLlistaNoticies().get(idNoticia);
+					
+					//NOTÍCIA FUTBOL
+					if (tipusNoticia instanceof Futbol) {
+						System.out.println("El preu de la notícia és de " + calcularPreuFutbol (totEsport, tipusNoticia) + "€.");
+						
+					//NOTÍCIA BÀSQUET
+					}else if(tipusNoticia instanceof Basquet) {
+						System.out.println("El preu de la notícia és de " + calcularPreuBasquet (totEsport, tipusNoticia) + "€.");
+						
+					//NOTÍCIA TENIS
+					}else if(tipusNoticia instanceof Tenis) {
+						System.out.println("El preu de la notícia és de " + calcularPreuTenis (totEsport, tipusNoticia) + "€.");
+						
+					//NOTÍCIA F1
+					}else if(tipusNoticia instanceof F1) {
+						System.out.println("El preu de la notícia és de " + calcularPreuF1 (totEsport, tipusNoticia) + "€.");
+						
+					//NOTÍCIA MOTOCICLISME
+					}else if(tipusNoticia instanceof Motociclisme);
+						System.out.println("El preu de la notícia és de " + calcularPreuMotociclisme (totEsport, tipusNoticia) + "€.");
+				}else {
+					System.out.println("Notícia no trobada a l'aplicació.");
+				}		
+			}else {
+				System.out.println("Redactor no trobat a l'aplicació.");
+			}
+		}
 }
 	
 
