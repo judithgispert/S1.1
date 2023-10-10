@@ -424,14 +424,14 @@ public class N3Ex1 {
 		static int calcularPreuFutbol (Redaccio totEsport, Object tipusNoticia) {
 			int contPreuFutbol = 300;
 			
-			//PUNTUACIÓ COMPETICIÓ
+			//PREU COMPETICIÓ
 			String nomCompeticio = ((Futbol) tipusNoticia).getCompeticio();
 			if(nomCompeticio.equalsIgnoreCase("Campions")) {
 				contPreuFutbol += 100;
 			}else {
 				contPreuFutbol += 0;
 			}
-			//PUNTUACIÓ CLUB
+			//PREU CLUB
 			String nomClub = ((Futbol)tipusNoticia).getClub();
 			if(nomClub.equalsIgnoreCase("Barça")) {
 				contPreuFutbol += 100;
@@ -440,7 +440,7 @@ public class N3Ex1 {
 			}else {
 				contPreuFutbol += 0;
 			}
-			//PUNTUACIÓ JUGADOR
+			//PREU JUGADOR
 			String nomJugador = ((Futbol) tipusNoticia).getJugador();
 			if(nomJugador.equalsIgnoreCase("Ferran Torres")) {
 				contPreuFutbol += 50;
@@ -457,14 +457,14 @@ public class N3Ex1 {
 		static int calcularPreuBasquet (Redaccio totEsport, Object tipusNoticia) {
 			int contPreuBasquet = 250;
 		
-			//PUNTUACIÓ COMPETICIÓ
+			//PREU COMPETICIÓ
 			String nomCompeticio = ((Basquet)tipusNoticia).getCompeticio();
 			if(nomCompeticio.equalsIgnoreCase("Eurolliga")) {
 				contPreuBasquet += 75;
 			}else {
 				contPreuBasquet += 0;
 			}
-			//PUNTUACIÓ CLUB
+			//PREU CLUB
 			String nomClub = ((Basquet)tipusNoticia).getClub();
 			if(nomClub.equalsIgnoreCase("Barça")) {
 				contPreuBasquet += 75;
@@ -481,7 +481,7 @@ public class N3Ex1 {
 		static int calcularPreuTenis (Redaccio totEsport, Object tipusNoticia) {
 			int contPreuTenis = 150;
 			
-			//PUNTUACIÓ NOM TENISTA
+			//PREU NOM TENISTA
 			String nomTenista = ((Tenis) tipusNoticia).getTenista();
 			if(nomTenista.equalsIgnoreCase("Federer")) {
 				contPreuTenis += 100;
@@ -500,7 +500,7 @@ public class N3Ex1 {
 		static int calcularPreuF1(Redaccio totEsport, Object tipusNoticia) {
 			int contPreuF1 = 100;
 			
-			//PUNTUACIÓ ESCUDERIA	
+			//PREU ESCUDERIA	
 			String nomEscuderia = ((F1) tipusNoticia).getEscuderia();
 			if(nomEscuderia.equalsIgnoreCase("Ferrari")) {
 				contPreuF1 += 50;
@@ -517,7 +517,7 @@ public class N3Ex1 {
 		static int calcularPreuMotociclisme (Redaccio totEsport, Object tipusNoticia) {
 			int contPreuMoto = 100;
 			
-			//PUNTUACIÓ EQUIP
+			//PREU EQUIP
 			String nomEquip = ((Motociclisme) tipusNoticia).getEquip();
 			if(nomEquip.equalsIgnoreCase("Honda")) {
 				contPreuMoto += 50;
@@ -530,7 +530,7 @@ public class N3Ex1 {
 			return contPreuMoto;
 		}
 		
-		//MÈTODE PER CALCULAR PUNTUACIÓ
+		//MÈTODE PER CALCULAR PREU
 		static void calcularPreuNoticia(Redaccio totEsport) {
 		
 			int idRedactor = buscarRedactor (totEsport);
